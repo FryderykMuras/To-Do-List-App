@@ -1,0 +1,19 @@
+.TodoItemsListDone{
+    flex: 200px;
+    flex-direction: column;
+    background-color: #ffb89e;
+    display: flex;
+    border-radius: 5px;
+    margin: 5px;
+
+}
+
+.TodoItemsList {
+    display: flex;
+    flex-direction: column;
+    flex: 200px;
+    background-color: rgba(146, 255, 182, 0.72);
+    border-radius: 5px;
+    margin: 5px;
+
+}
