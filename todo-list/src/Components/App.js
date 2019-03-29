@@ -35,7 +35,7 @@ class App extends Component {
         this.setState(prevState=>{
 
             const newData = prevState.data.filter(function(item){
-                console.log("dupa")
+
                 return item.id !== id
             })
             return {
