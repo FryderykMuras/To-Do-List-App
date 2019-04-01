@@ -5,7 +5,9 @@
     display: flex;
     border-radius: 5px;
     margin: 5px;
+    overflow: auto;
 
+    height: calc(100% - 10px)
 }
 
 .TodoItemsList {
@@ -15,5 +17,18 @@
     background-color: rgba(146, 255, 182, 0.72);
     border-radius: 5px;
     margin: 5px;
+    overflow: auto;
 
+    height: calc(100% - 10px)
 }
+
+@media only screen and (max-width: 449px) {
+    .TodoItemsList{
+        height: calc(50% - 10px);
+    }
+    .TodoItemsListDone{
+        height: calc(50% - 10px);
+    }
+}
+
+

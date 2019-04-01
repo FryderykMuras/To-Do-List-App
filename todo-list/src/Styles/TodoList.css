@@ -6,10 +6,12 @@
     justify-content: space-around;
     background-color: #858585;
     border-radius: 5px;
+    height: calc(92% - 40px);
 
 }
 .Lists{
     display: flex;
     width: 100%;
+    height: 100%;
     flex-wrap: wrap;
 }

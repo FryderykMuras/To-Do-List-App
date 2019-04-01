@@ -33,7 +33,7 @@ class TodoList extends React.Component{
                                 </button>
                             </div>
         return(
-            <section >
+
                 <div className="TodoList">
                     <div className="Lists">
                         <TodoItemsList
@@ -49,7 +49,7 @@ class TodoList extends React.Component{
                     </div>
                     {newItemForm}
                 </div>
-            </section>
+
         )
     }
 }
