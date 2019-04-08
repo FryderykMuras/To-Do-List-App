@@ -1,7 +1,6 @@
 import React from "react";
-
-class AddNewItemForm extends React.Component{
-    constructor(){
+class AddNewItemForm extends React.Component {
+    constructor() {
         super()
         this.state = {
             title: "",
@@ -9,42 +8,49 @@ class AddNewItemForm extends React.Component{
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleCreate = this.handleCreate.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
 
     }
 
-    handleChange(event){
-        const {name,value} = event.target
+    handleChange(event) {
+        const {name, value} = event.target
         this.setState({
             [name]: value
         })
     }
 
-    handleCreate(event){
+    handleCreate(event) {
         event.preventDefault()
         this.props.newItemHandler(this.state.title, this.state.description)
-        this.props.toogleDisplayHandler()
+        this.props.toogleDisplayHandler(null)
     }
 
-    render(){
-        return(
-            <div>
-                <form onSubmit={this.handleCreate}>
+    handleCancel() {
+        this.props.toogleDisplayHandler(null)
+    }
+
+    render() {
+        return (
+
+                <form onSubmit={this.handleCreate} className={"ItemForm"}>
                     <input type={"text"}
                            name={"title"}
                            placeholder={"Title"}
                            value={this.state.title}
                            onChange={this.handleChange}
                     />
-                    <input type={"text"}
-                           name={"description"}
-                           placeholder={"Description"}
-                           value={this.state.description}
-                           onChange={this.handleChange}
+                    <textarea className={"DescriptionTextArea"}
+                              name={"description"}
+                              placeholder={"Description"}
+                              value={this.state.description}
+                              onChange={this.handleChange}
                     />
-
-                    <button>Create</button>
+                    <div className={"ItemFormButtons"} >
+                        <button>Create</button>
+                        <button type={"button"} onClick={this.handleCancel}>Cancel</button>
+                    </div>
                 </form>
-            </div>
+
         )
     }
 }

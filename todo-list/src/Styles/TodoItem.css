@@ -2,7 +2,7 @@
     border: 2px solid #ff1564;
     border-radius: 5px;
     flex: 0 100px;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
 }
 
@@ -21,7 +21,7 @@
     color: #FFFFFF;
     text-align: center;
     font-size: 10px;
-    padding: 5px;
+    padding: 1px;
     width: 100px;
     transition: all 0.4s;
     cursor: pointer;
@@ -60,3 +60,13 @@
     height: 20px;
 }
 
+p {
+    overflow-wrap: break-word;
+}
+.Title{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.Description{
+    margin-bottom: 0;
+}

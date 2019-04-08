@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 import '../Styles/App.css'
 import TodoList from "./TodoList"
 import Header from "./Header"
+import Forms from "./Forms";
 
 
 class App extends Component {
@@ -10,10 +11,14 @@ class App extends Component {
         super(props)
         this.state = {
             data: [],
-            currentID: 0
+            currentID: 0,
+            isAddingNewItem: false
         }
-        // this.handleChange = this.handleChange.bind(this)
-        // this.addNewItem = this.addNewItem.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.addNewItem = this.addNewItem.bind(this)
+        this.handleAddingNewItem = this.handleAddingNewItem.bind(this)
+        this.editItem = this.editItem.bind(this)
+        this.getItemData = this.getItemData.bind(this)
     }
 
     componentDidMount() {
@@ -52,6 +57,10 @@ class App extends Component {
                     data: newData
                 }
             })
+        } else if (operation === "edit") {
+            this.setState({editedId: id})
+            this.handleAddingNewItem("edit")
+            console.log(this.getItemData(id))
         }
 
     }
@@ -59,6 +68,7 @@ class App extends Component {
     addNewItem(title, description) {
         let newData = this.state.data
         const id = this.state.currentID
+        console.log("created",id)
         newData.push({
                 id: id,
                 title: title,
@@ -71,6 +81,36 @@ class App extends Component {
                 data: newData,
                 currentID: id + 1
             })
+        console.log(this.state)
+    }
+
+    editItem(title, description, id) {
+        this.setState(prevState => {
+            return {
+                data: prevState.data.map(item => {
+                    if (item.id === id) {
+                        let editedItem = item
+                        editedItem.title = title
+                        editedItem.description = description
+                        return editedItem
+                    } else {
+                        return item
+                    }
+                })
+            }
+        })
+    }
+
+    getItemData(id) {
+        return this.state.data.filter(item => item.id === id)[0]
+    }
+
+    handleAddingNewItem(status) {
+        this.setState(prevState => {
+            return {
+                isAddingNewItem: prevState.isAddingNewItem === null ? status : null
+            }
+        })
     }
 
 
@@ -78,8 +118,19 @@ class App extends Component {
 
         return (
             <div className="App">
+
+                <Forms status={this.state.isAddingNewItem}
+                       editedId={this.state.editedId}
+                       newItemHandler={this.addNewItem}
+                       editItemHandler={this.editItem}
+                       handleAddingNewItem={this.handleAddingNewItem}
+                       itemDataGeter={this.getItemData}
+                />
                 <Header/>
-                <TodoList data={this.state.data} handler={this.handleChange} newItemHandler={this.addNewItem}/>
+                <TodoList data={this.state.data}
+                          handler={this.handleChange}
+                          handleAddingNewItem={this.handleAddingNewItem}
+                />
 
             </div>
         )
