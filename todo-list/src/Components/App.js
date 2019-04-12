@@ -29,8 +29,13 @@ class App extends Component {
     }
 
     componentDidUpdate() {
+        console.log("zapisuję ciasteczka", this.state)
         Cookies.set('state', JSON.stringify(this.state), {expires: 365})
+        console.log(Cookies.get('state'))
     }
+
+
+
 
     handleChange(id, operation) {
         console.log(operation, id)
@@ -38,14 +43,14 @@ class App extends Component {
             this.setState(prevState => {
                 const newData = prevState.data.map(function (item) {
                     if (item.id === id) {
-                        const newItem = item
+                        let newItem = item
                         newItem.isDone = !newItem.isDone
                         return newItem
                     } else {
                         return item
                     }
                 })
-                return newData
+                return {data: newData}
             })
         } else if (operation === "delete") {
 

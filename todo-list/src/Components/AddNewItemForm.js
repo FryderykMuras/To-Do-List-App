@@ -14,9 +14,12 @@ class AddNewItemForm extends React.Component {
 
     handleChange(event) {
         const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        if(name === "description" || (name === "title" && value.toString().length<100)){
+            this.setState({
+                [name]: value
+            })
+        }
+
     }
 
     handleCreate(event) {
@@ -33,7 +36,8 @@ class AddNewItemForm extends React.Component {
         return (
 
                 <form onSubmit={this.handleCreate} className={"ItemForm"}>
-                    <input type={"text"}
+                    <input className={"FormTitle"}
+                           type={"text"}
                            name={"title"}
                            placeholder={"Title"}
                            value={this.state.title}
@@ -46,8 +50,12 @@ class AddNewItemForm extends React.Component {
                               onChange={this.handleChange}
                     />
                     <div className={"ItemFormButtons"} >
-                        <button>Create</button>
-                        <button type={"button"} onClick={this.handleCancel}>Cancel</button>
+
+                        <button className={"FormButton"}
+                                type={"button"}
+                                onClick={this.handleCancel}
+                        >Cancel</button>
+                        <button className={"FormButton"}>Create</button>
                     </div>
                 </form>
 

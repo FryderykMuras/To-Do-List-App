@@ -16,9 +16,12 @@ class EditItemForm extends React.Component {
 
     handleChange(event) {
         const {name, value} = event.target
-        this.setState({
-            [name]: value
-        })
+        if(name === "description" || (name === "title" && value.toString().length<100)){
+            this.setState({
+                [name]: value
+            })
+        }
+
     }
 
     handleCreate(event) {
@@ -35,7 +38,8 @@ class EditItemForm extends React.Component {
         return (
 
             <form onSubmit={this.handleCreate} className={"ItemForm"}>
-                <input type={"text"}
+                <input className={"FormTitle"}
+                       type={"text"}
                        name={"title"}
                        placeholder={"Title"}
                        value={this.state.title}
@@ -48,8 +52,9 @@ class EditItemForm extends React.Component {
                           onChange={this.handleChange}
                 />
                 <div className={"ItemFormButtons"}>
-                    <button>Edit</button>
-                    <button type={"button"} onClick={this.handleCancel}>Cancel</button>
+
+                    <button className={"FormButton"} type={"button"} onClick={this.handleCancel}>Cancel</button>
+                    <button className={"FormButton"}>Edit</button>
                 </div>
             </form>
 

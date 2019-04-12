@@ -1,5 +1,6 @@
 import React from 'react'
 import TodoItemsList from "./TodoItemsList"
+import {MdAddCircleOutline} from 'react-icons/md'
 import "../Styles/TodoList.css"
 
 class TodoList extends React.Component {
@@ -36,8 +37,10 @@ class TodoList extends React.Component {
 
             <div className="TodoList">
                 <div className={"AddItemButtonDiv"}>
-                    <button className={"AddItemButton"} onClick={() => this.props.handleAddingNewItem("new")}>
-                        Add Item
+                    <button title={"Create new item"} className={"AddItemButton"} onClick={() => this.props.handleAddingNewItem("new")}>
+                        <span >
+                            <MdAddCircleOutline/>
+                        </span>
                     </button>
                 </div>
                 <div className="Lists">

@@ -19,11 +19,10 @@
     top: 50%;
     left: 50%;
 
-    padding: 5px;
+
     border-radius: 5px;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
-    background-color: #f3f3f3;
 
 }
 
@@ -31,7 +30,9 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    background-color: #ff1564;
+    background-color: #737373;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 .ItemFormButtons{
@@ -40,9 +41,39 @@
 }
 
 .DescriptionTextArea{
+    color: #3d3d3d;
     width: 60vw;
     height: 30vh;
-    margin: 10px;
+    margin: 5px;
+    padding: 3px;
+    margin-top: 0;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.FormTitle{
+    color: #3d3d3d;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+    padding: 3px;
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.FormButton{
+    display:inline-block;
+    border-radius: 4px;
+    background-color: #3d3d3d;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px;
+    width: 100px;
+    transition: all 0.4s;
+    cursor: pointer;
+    margin: 0 5px 5px 5px;
 }
 
 @media only screen and (max-width: 449px) {

@@ -1,4 +1,5 @@
 import React from 'react'
+import {MdDeleteForever, MdModeEdit, MdArrowBack, MdArrowForward} from 'react-icons/md';
 import "../Styles/TodoItem.css"
 
 class TodoItem extends React.Component {
@@ -6,14 +7,23 @@ class TodoItem extends React.Component {
         return (
             <div className="TodoItem">
                 <div className={"ButtonDiv"}>
-                    <button className="button" onClick={() => this.props.handler(this.props.data.id, "toggleState")}>
-                        <span>Toogle State</span>
+                    <button title={"Toogle State"} className="button"
+                            onClick={() => this.props.handler(this.props.data.id, "toggleState")}>
+                        <span>
+                            {this.props.data.isDone ? <MdArrowBack/> : <MdArrowForward/>}
+                        </span>
                     </button>
-                    <button className="button" onClick={() => this.props.handler(this.props.data.id, "edit")}>
-                        <span>Edit</span>
+                    <button title={"Edit"} className="button"
+                            onClick={() => this.props.handler(this.props.data.id, "edit")}>
+                        <span>
+                            <MdModeEdit/>
+                        </span>
                     </button>
-                    <button className="button" onClick={() => this.props.handler(this.props.data.id, "delete")}>
-                        <span>Delete item</span>
+                    <button title={"Delete"} className="button"
+                            onClick={() => this.props.handler(this.props.data.id, "delete")}>
+                        <span>
+                            <MdDeleteForever/>
+                        </span>
                     </button>
                 </div>
 

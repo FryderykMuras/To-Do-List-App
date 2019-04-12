@@ -8,6 +8,7 @@ export function TodoItemsList(props){
                                                        key={item.id}
                                                        data={item}
                                                         />)
+    console.log(props.items)
     return(
         <div className={className}>
             {elements}
