@@ -24,6 +24,9 @@ class TodoList extends React.Component {
     render() {
         const doneItems = this.props.data.filter(item => item.isDone)
         const notDoneItems = this.props.data.filter(item => !item.isDone)
+
+        const doneProgress = Math.floor(doneItems.length / this.props.data.length * 100)+"%"
+        document.title = "Todo List ("+notDoneItems.length+"/"+doneItems.length+")"
         // const newItemForm = this.state.isAddingNewItem
         //                     ?<div className="NewItemForm">
         //                         <AddNewItemForm newItemHandler={this.props.newItemHandler} toogleDisplayHandler={this.handleAddingNewItem}/>
@@ -37,8 +40,17 @@ class TodoList extends React.Component {
 
             <div className="TodoList">
                 <div className={"AddItemButtonDiv"}>
-                    <button title={"Create new item"} className={"AddItemButton"} onClick={() => this.props.handleAddingNewItem("new")}>
-                        <span >
+
+                        <div className={"ProgressBarDiv"}>
+                            <div className={"ProgressBarTitle"}>Progress:</div>
+                            <span className={"ProgressBar"} style={{width: doneProgress}}></span>
+                        </div>
+
+
+
+                    <button title={"Create new item"} className={"AddItemButton"}
+                            onClick={() => this.props.handleAddingNewItem("new")}>
+                        <span>
                             <MdAddCircleOutline/>
                         </span>
                     </button>

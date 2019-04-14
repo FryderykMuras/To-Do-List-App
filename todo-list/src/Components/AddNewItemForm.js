@@ -35,12 +35,16 @@ class AddNewItemForm extends React.Component {
     render() {
         return (
 
-                <form onSubmit={this.handleCreate} className={"ItemForm"}>
+                <form onSubmit={this.handleCreate}
+                      className={"ItemForm"}
+                      onKeyDown={event => event.which === 27 ? this.handleCancel() : null}
+                >
                     <input className={"FormTitle"}
                            type={"text"}
                            name={"title"}
                            placeholder={"Title"}
                            value={this.state.title}
+                           autoFocus={true}
                            onChange={this.handleChange}
                     />
                     <textarea className={"DescriptionTextArea"}

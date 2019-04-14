@@ -8,30 +8,38 @@ class Forms extends React.Component {
         let form;
         if (this.props.status === "edit") {
             console.log(this.props.editedId)
-            form = <div className={"BackgroundDiv"}>
-                <div className={"Form"}>
-                    <EditItemForm editedItemId={this.props.editedId}
-                                  editItemHandler={this.props.editItemHandler}
-                                  toogleDisplayHandler={this.props.handleAddingNewItem}
-                                  itemDataGeter={this.props.itemDataGeter}
-                    />
-                </div>
+            form = <div className={"Form"} onClick={(event)=>event.stopPropagation()}>
+                <EditItemForm editedItemId={this.props.editedId}
+                              editItemHandler={this.props.editItemHandler}
+                              toogleDisplayHandler={this.props.handleAddingNewItem}
+                              itemDataGeter={this.props.itemDataGeter}
+                />
             </div>
+
         } else if (this.props.status === "new") {
-            form = <div className={"BackgroundDiv"}>
-                <div className={"Form"}>
-                    <AddNewItemForm newItemHandler={this.props.newItemHandler}
-                                    toogleDisplayHandler={this.props.handleAddingNewItem}
-                    />
-                </div>
+            form = <div className={"Form"} onClick={(event)=>event.stopPropagation()}>
+                <AddNewItemForm newItemHandler={this.props.newItemHandler}
+                                toogleDisplayHandler={this.props.handleAddingNewItem}
+                />
             </div>
+
         } else {
             form = null
         }
+        if (form){
+            return (
+                <div className={"BackgroundDiv"}
+                     tabIndex={"0"}
+                     onClick={()=>this.props.handleAddingNewItem(null)}
 
-        return (
-            form
-        )
+                >
+                    {form}
+                </div>
+            )
+        }else{
+            return null
+        }
+
     }
 }
 

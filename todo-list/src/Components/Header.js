@@ -1,10 +1,12 @@
 import React from "react"
 import "../Styles/Header.css"
 
-function Header(props){
-    return(
+function Header(props) {
+    return (
         <header>
-            <h1>TODO-list</h1>
+            <div className={"title"}>
+                <div>TODO-list</div>
+            </div>
         </header>
     )
 }
