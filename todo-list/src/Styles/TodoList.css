@@ -7,7 +7,7 @@
     justify-content: space-around;
     background-color: #737373;
     border-radius: 5px;
-    height: calc(95% - 20px);
+    height: calc(100% - 45px - 20px);
 
 }
 .Lists{

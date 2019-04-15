@@ -2,36 +2,36 @@ import React from "react";
 
 class EditItemForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             title: props.itemDataGeter(props.editedItemId).title,
             description: props.itemDataGeter(props.editedItemId).description
-        }
+        };
 
-        this.handleChange = this.handleChange.bind(this)
-        this.handleCreate = this.handleCreate.bind(this)
-        this.handleCancel = this.handleCancel.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleCreate = this.handleCreate.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
 
     }
 
     handleChange(event) {
-        const {name, value} = event.target
+        const {name, value} = event.target;
         if(name === "description" || (name === "title" && value.toString().length<100)){
             this.setState({
                 [name]: value
-            })
+            });
         }
 
     }
 
     handleCreate(event) {
-        event.preventDefault()
-        this.props.editItemHandler(this.state.title, this.state.description, this.props.editedItemId)
-        this.props.toogleDisplayHandler(null)
+        event.preventDefault();
+        this.props.editItemHandler(this.state.title, this.state.description, this.props.editedItemId);
+        this.props.toogleDisplayHandler(null);
     }
 
     handleCancel() {
-        this.props.toogleDisplayHandler(null)
+        this.props.toogleDisplayHandler(null);
     }
 
     render() {
@@ -62,8 +62,8 @@ class EditItemForm extends React.Component {
                 </div>
             </form>
 
-        )
+        );
     }
 }
 
-export default EditItemForm
+export default EditItemForm;

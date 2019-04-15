@@ -1,20 +1,19 @@
-import React from 'react'
-import TodoItem from "./TodoItem"
-import "../Styles/TodoItemsList.css"
+import React from 'react';
+import TodoItem from "./TodoItem";
+import "../Styles/TodoItemsList.css";
 
 export function TodoItemsList(props){
-    const className = props.isDone ? "TodoItemsListDone" : "TodoItemsList";
+    const id = props.isDone ? "ListDone" : "ListNotDone";
     const elements = props.items.map((item)=><TodoItem handler={props.handler}
                                                        key={item.id}
                                                        data={item}
-                                                        />)
-    console.log(props.items)
+                                                        />);
     return(
-        <div className={className}>
+        <div className={"TodoItemsList"} id={id}>
             {elements}
         </div>
-    )
+    );
 }
 
-export default TodoItemsList
+export default TodoItemsList;
 

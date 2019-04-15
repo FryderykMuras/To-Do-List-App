@@ -5,10 +5,10 @@ function Header(props) {
     return (
         <header>
             <div className={"title"}>
-                <div>TODO-list</div>
+                todo
             </div>
         </header>
-    )
+    );
 }
 
-export default Header
+export default Header;

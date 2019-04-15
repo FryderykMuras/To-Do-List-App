@@ -3,44 +3,42 @@ import AddNewItemForm from "./AddNewItemForm";
 import "../Styles/Forms.css"
 import EditItemForm from "./EditItemForm";
 
-class Forms extends React.Component {
-    render() {
+function Forms(props) {
         let form;
-        if (this.props.status === "edit") {
-            console.log(this.props.editedId)
+        if (props.status === "edit") {
+            console.log(props.editedId);
             form = <div className={"Form"} onClick={(event)=>event.stopPropagation()}>
-                <EditItemForm editedItemId={this.props.editedId}
-                              editItemHandler={this.props.editItemHandler}
-                              toogleDisplayHandler={this.props.handleAddingNewItem}
-                              itemDataGeter={this.props.itemDataGeter}
+                <EditItemForm editedItemId={props.editedId}
+                              editItemHandler={props.editItemHandler}
+                              toogleDisplayHandler={props.handleAddingNewItem}
+                              itemDataGeter={props.itemDataGeter}
                 />
-            </div>
+            </div>;
 
-        } else if (this.props.status === "new") {
+        } else if (props.status === "new") {
             form = <div className={"Form"} onClick={(event)=>event.stopPropagation()}>
-                <AddNewItemForm newItemHandler={this.props.newItemHandler}
-                                toogleDisplayHandler={this.props.handleAddingNewItem}
+                <AddNewItemForm newItemHandler={props.newItemHandler}
+                                toogleDisplayHandler={props.handleAddingNewItem}
                 />
-            </div>
+            </div>;
 
         } else {
-            form = null
+            form = null;
         }
         if (form){
             return (
                 <div className={"BackgroundDiv"}
                      tabIndex={"0"}
-                     onClick={()=>this.props.handleAddingNewItem(null)}
-
+                     onClick={()=>props.handleAddingNewItem(null)}
                 >
                     {form}
                 </div>
-            )
+            );
         }else{
-            return null
+            return form;
         }
 
-    }
+
 }
 
-export default Forms
+export default Forms;
