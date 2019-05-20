@@ -79,6 +79,14 @@
     margin: 0 5px 5px 5px;
 }
 
+.Warning{
+    margin: 5px;
+    margin-top: 0;
+    padding: 3px;
+    color: #6e2525;
+
+}
+
 @media only screen and (max-width: 449px) {
     .ItemForm{
         width: 90vw;

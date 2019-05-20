@@ -11,7 +11,11 @@ class EditItemForm extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.displayWarning = this.displayWarning.bind(this);
+    }
 
+    displayWarning(){
+        this.setState({displayWarning: true})
     }
 
     handleChange(event) {
@@ -26,6 +30,10 @@ class EditItemForm extends React.Component {
 
     handleCreate(event) {
         event.preventDefault();
+        if(this.state.title.length < 5){
+            this.displayWarning();
+            return;
+        }
         this.props.editItemHandler(this.state.title, this.state.description, this.props.editedItemId);
         this.props.toogleDisplayHandler(null);
     }
@@ -55,6 +63,11 @@ class EditItemForm extends React.Component {
                           value={this.state.description}
                           onChange={this.handleChange}
                 />
+
+                {this.state.displayWarning ? (<div className={"Warning"} >
+                    Title must be at least 5 characters long
+                </div>) : null}
+
                 <div className={"ItemFormButtons"}>
 
                     <button className={"FormButton"} type={"button"} onClick={this.handleCancel}>Cancel</button>

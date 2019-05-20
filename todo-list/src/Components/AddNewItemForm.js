@@ -4,11 +4,13 @@ class AddNewItemForm extends React.Component {
         super(props);
         this.state = {
             title: "",
-            description: ""
+            description: "",
+            displayWarning: false
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.displayWarning = this.displayWarning.bind(this);
 
     }
 
@@ -22,8 +24,16 @@ class AddNewItemForm extends React.Component {
 
     }
 
+    displayWarning(){
+        this.setState({displayWarning: true})
+    }
+
     handleCreate(event) {
         event.preventDefault();
+        if(this.state.title.length < 5){
+            this.displayWarning();
+            return;
+        }
         this.props.newItemHandler(this.state.title, this.state.description);
         this.props.toogleDisplayHandler(null);
     }
@@ -53,6 +63,10 @@ class AddNewItemForm extends React.Component {
                               value={this.state.description}
                               onChange={this.handleChange}
                     />
+                    {this.state.displayWarning ? (<div className={"Warning"} >
+                        Title must be at least 5 characters long
+                    </div>) : null}
+
                     <div className={"ItemFormButtons"} >
 
                         <button className={"FormButton"}
@@ -61,10 +75,12 @@ class AddNewItemForm extends React.Component {
                         >Cancel</button>
                         <button className={"FormButton"}>Create</button>
                     </div>
+
                 </form>
 
         );
     }
 }
+
 
 export default AddNewItemForm;
